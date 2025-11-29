@@ -17,15 +17,6 @@ AFRAME.registerComponent('portal-label', {
     const wrapper = document.createElement('a-entity');
     wrapper.object3D.position.set(offset[0], offset[1], offset[2]);
 
-    // --- Auto-Wrap Text ---
-    const maxLineChars = data.maxChars || 22; // you can adjust globally
-    const wrappedText = wrapText(data.text, maxLineChars);
-    // --- Count Lines ---
-    const lines = wrappedText.split('\n').length;
-    // --- Background Auto-Resize ---
-    const lineHeight = data.textScale * 0.45; // tuning factor
-    const dynamicHeight = (lines * lineHeight) + 0.2;
-
     // --- Background Box ---
     const bg = document.createElement('a-plane');
     bg.setAttribute('width', data.width);
@@ -44,8 +35,7 @@ AFRAME.registerComponent('portal-label', {
     // --- Added A-text scaling *important ---
     label.setAttribute('scale', `${data.textScale} ${data.textScale} ${data.textScale}`);
     label.setAttribute('width', data.width * 1.2 * data.textScale);  // auto-fit
-    label.setAttribute('position', `0 ${(lineHeight / 2) * 0.5} 0.01`);
-    //label.setAttribute('position', '0 0 0.01');    // slight forward
+    label.setAttribute('position', '0 0 0.01');    // slight forward
 
     wrapper.appendChild(bg);
     wrapper.appendChild(label);
