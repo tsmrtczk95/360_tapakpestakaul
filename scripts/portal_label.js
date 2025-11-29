@@ -8,7 +8,6 @@ AFRAME.registerComponent('portal-label', {
     backgroundOpacity: {default: 0.6},
     textColor: {default: '#ffffff'},
     textScale: {default: 1},    //textScale in index.html: 1-Normal, 2-Double Size 4-Very Large
-    maxWidth: {default: 18}
   },
 
   init: function () {
@@ -64,23 +63,5 @@ AFRAME.registerComponent('portal-label', {
     camera.getWorldPosition(camPos);
 
     this.wrapper.object3D.lookAt(camPos);
-  },
-
-  // --- Helper: automatic word-wrapping ---
-  function wrapText(text, maxChars) {
-    const words = text.split(' ');
-    let line = '';
-    let result = '';
-    
-    words.forEach(word => {
-      if ((line + word).length > maxChars) {
-        result += line.trim() + '\n';
-        line = '';
-      }
-      line += word + ' ';
-    });
-    result += line.trim();
-    
-    return result;
   }
 });
