@@ -7,7 +7,8 @@ AFRAME.registerComponent('portal-label', {
     backgroundColor: {default: 'black'},
     backgroundOpacity: {default: 0.6},
     textColor: {default: '#ffffff'},
-    textScale: {default: 1}    //textScale in index.html: 1-Normal, 2-Double Size 4-Very Large
+    textScale: {default: 1},    //textScale in index.html: 1-Normal, 2-Double Size 4-Very Large
+    maxWidth: {default: 18}
   },
 
   init: function () {
@@ -17,7 +18,16 @@ AFRAME.registerComponent('portal-label', {
     const wrapper = document.createElement('a-entity');
     wrapper.object3D.position.set(offset[0], offset[1], offset[2]);
 
-    // --- Background box ---
+    // --- Auto-Wrap Text ---
+    const maxLineChars = data.maxChars || 22; // you can adjust globally
+    const wrappedText = wrapText(data.text, maxLineChars);
+    // --- Count Lines ---
+    const lines = wrappedText.split('\n').length;
+    // --- Background Auto-Resize ---
+    const lineHeight = data.textScale * 0.45; // tuning factor
+    const dynamicHeight = (lines * lineHeight) + 0.2;
+
+    // --- Background Box ---
     const bg = document.createElement('a-plane');
     bg.setAttribute('width', data.width);
     bg.setAttribute('height', data.height);
@@ -32,10 +42,11 @@ AFRAME.registerComponent('portal-label', {
     label.setAttribute('align', 'center');
     label.setAttribute('color', data.textColor);
     label.setAttribute('side', 'double');
-    // Added A-text scaling *important
+    // --- Added A-text scaling *important ---
     label.setAttribute('scale', `${data.textScale} ${data.textScale} ${data.textScale}`);
     label.setAttribute('width', data.width * 1.2 * data.textScale);  // auto-fit
-    label.setAttribute('position', '0 0 0.01');     // slight forward
+    label.setAttribute('position', `0 ${(lineHeight / 2) * 0.5} 0.01`);
+    //label.setAttribute('position', '0 0 0.01');    // slight forward
 
     wrapper.appendChild(bg);
     wrapper.appendChild(label);
@@ -45,7 +56,7 @@ AFRAME.registerComponent('portal-label', {
   },
 
   tick: function () {
-    // Billboard effect: always face camera
+    // Billboard Effect: Always Face Camera
     const camera = this.el.sceneEl.camera;
     if (!camera) return;
 
@@ -53,5 +64,23 @@ AFRAME.registerComponent('portal-label', {
     camera.getWorldPosition(camPos);
 
     this.wrapper.object3D.lookAt(camPos);
+  },
+
+  // --- Helper: automatic word-wrapping ---
+  function wrapText(text, maxChars) {
+    const words = text.split(' ');
+    let line = '';
+    let result = '';
+    
+    words.forEach(word => {
+      if ((line + word).length > maxChars) {
+        result += line.trim() + '\n';
+        line = '';
+      }
+      line += word + ' ';
+    });
+    result += line.trim();
+    
+    return result;
   }
 });
