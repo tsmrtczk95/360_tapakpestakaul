@@ -56,14 +56,14 @@
       <a-entity id="aud-1" sound="src: #audio-1; autoplay: false; loop: false; volume: 1; positional: true"></a-entity>
 <!-- PAUSE MODE TEMPLATE -->
       <a-entity position="5 0 0" layout="type: line; margin: 1.5" border="2px">
-        <a-sphere position="-2 0 0" radius="0.2" color="#ffaa00"
+        <a-sphere position="0 0 -2" radius="0.2" color="#ffaa00"
           portal-label="text: SAPE LETO NGOREK; offset: 0 -0.4 0; textScale: 1.2"
           audio-toggle="target: #aud-0; mode: pause"
           animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200" 
           animation__leave="property: scale; startEvents: mouseleave; to: 0.8 0.8 0.8; dur: 200">
         </a-sphere>
 <!-- STOP & RESTART TEMPLATE -->
-        <a-sphere position="2 0 0" radius="0.2" color="#ffaa00"
+        <a-sphere position="0 0 2" radius="0.2" color="#ffaa00"
           portal-label="text: TENTANG PESTA KAUL; offset: 0 -0.4 0; textScale: 1.2"
           audio-toggle="target: #aud-1; mode: restart"
           animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200"
