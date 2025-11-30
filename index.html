@@ -14,18 +14,14 @@
       <a-assets>
 <!-- AUDIO. -->
         <audio id="click-sound" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
-        <audio id="audio-0" src="/audio/aud_sape.mp3"></audio>
-        <audio id="audio-1" src="/audio/aud_pestakaul.mp3"></audio>
+        <audio id="audio0" src="/audio/aud_sape.mp3"></audio>
+        <audio id="audio1" src="/audio/aud_pestakaul.mp3"></audio>
 <!-- IMAGE. -->
         <img id="360img" src="asset/1_enter.jpeg">
         <img id="thumb1" src="asset/2_stage.jpeg">
         <img id="thumb2" src="asset/4_marker.jpeg">
         <img id="thumb3" src="asset/5_tower.jpeg">
         <img id="thumb4" src="asset/7_road.jpeg">
-
-        <img id="icon-01" src="icons/1.png">
-        <img id="icon-02" src="icons/2.png">
-        <img id="icon-03" src="icons/3.png">
       </a-assets>
 <!-- MAIN 360 IMAGE. -->
       <a-sky id="image-360" src="#360img" rotation="0 -55 0"
@@ -49,21 +45,22 @@
         portal-label="text: Road to Serahang Kakan Beach Site; offset: 0 1.1 0; textScale: 1.4" sound="on: click; src: #click-sound"
         animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200" animation__leave="property: scale; startEvents: mouseleave; to: 0.7 0.7 0.7; dur: 200">
       </a-sphere>
+      
 <!-- CONTENTS -->
 <!-- AUDIO ENTITIES -->
-      <a-entity id="aud-0" sound="src: #audio-0; autoplay: true; loop: true; volume: 0.8; positional: true"></a-entity>
-      <a-entity id="aud-1" sound="src: #audio-1; autoplay: false; loop: false; volume: 1; positional: true"></a-entity>
+      <a-entity id="aud0" sound="src: #audio0; autoplay: true; loop: true; volume: 0.8; positional: true"></a-entity>
+      <a-entity id="aud1" sound="src: #audio1; autoplay: false; loop: false; volume: 1; positional: true"></a-entity>
 <!-- PAUSE MODE TEMPLATE -->
       <a-sphere position="5 0.5 -1" radius="0.2" color="#ffaa00"
-        portal-label="text: SAPE LETO NGOREK; offset: 0 -0.4 0; textScale: 1.2"
-        audio-toggle="target: #aud-0; mode: pause"
+        portal-label="text: Sape Leto Ngorek; offset: 0 -0.4 0; textScale: 1.2"
+        audio-toggle="target: #aud0; mode: pause"
         animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200" 
         animation__leave="property: scale; startEvents: mouseleave; to: 0.8 0.8 0.8; dur: 200">
       </a-sphere>
 <!-- STOP & RESTART TEMPLATE -->
       <a-sphere position="5 0.5 1" radius="0.2" color="#ffaa00"
-        portal-label="text: TENTANG PESTA KAUL; offset: 0 -0.4 0; textScale: 1.2"
-        audio-toggle="target: #aud-1; mode: restart"
+        portal-label="text: Tentang Pesta Kaul; offset: 0 -0.4 0; textScale: 1.2"
+        audio-toggle="target: #aud1; mode: restart"
         animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200"
         animation__leave="property: scale; startEvents: mouseleave; to: 0.8 0.8 0.8; dur: 200">
       </a-sphere>
