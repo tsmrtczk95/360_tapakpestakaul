@@ -49,28 +49,24 @@
         portal-label="text: Road to Serahang Kakan Beach Site; offset: 0 1.1 0; textScale: 1.4" sound="on: click; src: #click-sound"
         animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200" animation__leave="property: scale; startEvents: mouseleave; to: 0.7 0.7 0.7; dur: 200">
       </a-sphere>
-      
 <!-- CONTENTS -->
 <!-- AUDIO ENTITIES -->
       <a-entity id="aud-0" sound="src: #audio-0; autoplay: true; loop: true; volume: 0.8; positional: true"></a-entity>
       <a-entity id="aud-1" sound="src: #audio-1; autoplay: false; loop: false; volume: 1; positional: true"></a-entity>
 <!-- PAUSE MODE TEMPLATE -->
-      <a-entity position="5 0 0" layout="type: line; margin: 1.5" border="2px">
-        <a-sphere position="0 0 -2" radius="0.2" color="#ffaa00"
-          portal-label="text: SAPE LETO NGOREK; offset: 0 -0.4 0; textScale: 1.2"
-          audio-toggle="target: #aud-0; mode: pause"
-          animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200" 
-          animation__leave="property: scale; startEvents: mouseleave; to: 0.8 0.8 0.8; dur: 200">
-        </a-sphere>
+      <a-sphere position="5 0.5 -1" radius="0.2" color="#ffaa00"
+        portal-label="text: SAPE LETO NGOREK; offset: 0 -0.4 0; textScale: 1.2"
+        audio-toggle="target: #aud-0; mode: pause"
+        animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200" 
+        animation__leave="property: scale; startEvents: mouseleave; to: 0.8 0.8 0.8; dur: 200">
+      </a-sphere>
 <!-- STOP & RESTART TEMPLATE -->
-        <a-sphere position="0 0 2" radius="0.2" color="#ffaa00"
-          portal-label="text: TENTANG PESTA KAUL; offset: 0 -0.4 0; textScale: 1.2"
-          audio-toggle="target: #aud-1; mode: restart"
-          animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200"
-          animation__leave="property: scale; startEvents: mouseleave; to: 0.8 0.8 0.8; dur: 200">
-        </a-sphere>
-      </a-entity>
-      
+      <a-sphere position="5 0.5 1" radius="0.2" color="#ffaa00"
+        portal-label="text: TENTANG PESTA KAUL; offset: 0 -0.4 0; textScale: 1.2"
+        audio-toggle="target: #aud-1; mode: restart"
+        animation__hover="property: scale; startEvents: mouseenter; to: 1.2 1.2 1.2; dur: 200"
+        animation__leave="property: scale; startEvents: mouseleave; to: 0.8 0.8 0.8; dur: 200">
+      </a-sphere>
 <!-- CAMERA + CURSOR. -->
       <a-camera wasd-controls-enabled="false" cursor="rayOrigin: mouse">
         <a-cursor id="cursor"
